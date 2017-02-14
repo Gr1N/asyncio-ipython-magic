@@ -2,12 +2,14 @@
 
 from setuptools import setup
 
+readme = open('README.rst').read()
 
 setup(
     name='asyncio-ipython-magic',
     version='0.0.2',
     description='An extension for IPython that help to run AsyncIO code in '
                 'your interactive session.',
+    long_description=readme,
     author='Nikita Grishko',
     author_email='gr1n@protonmain.com',
     url='https://github.com/Gr1N/asyncio-ipython-magic',
@@ -17,7 +19,6 @@ setup(
     install_requires=(
         'ipython',
     ),
-    include_package_data=True,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: IPython',
