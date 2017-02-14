@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='asyncio-ipython-magic',
-    version='0.0.1',
+    version='0.0.2',
     description='An extension for IPython that help to run AsyncIO code in '
                 'your interactive session.',
     author='Nikita Grishko',
