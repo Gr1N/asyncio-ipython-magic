@@ -1,10 +1,20 @@
 # -*- coding: utf-8 -*-
 
 import ast
-from ast import Call, Attribute, Name, Load
+from ast import (
+    Call,
+    Attribute,
+    Name,
+    Load,
+)
 import asyncio as _asyncio
 
-from IPython.core.magic import Magics, magics_class, cell_magic
+from IPython.core.magic import (
+    Magics,
+    magics_class,
+    cell_magic,
+    line_magic,
+)
 from IPython.utils.text import indent
 
 
@@ -44,13 +54,23 @@ class RewriteAwait(ast.NodeTransformer):
 
 @magics_class
 class AsyncIOMagics(Magics):
-    @cell_magic
-    def asyncio(self, line, cell):
-        coro_wrapper = 'async def __f():\n{cell}'.format(cell=indent(cell))
-        coro_wrapper = ast.parse(coro_wrapper)
-        coro_wrapper = coro_wrapper.body[0].body
+    @line_magic
+    def await_(self, line):
+        expr = 'async def __f(): await {line}'.format(line=indent(line))
 
-        nodes = [RewriteAwait().visit(node) for node in coro_wrapper]
+        self._exec(expr)
+
+    @cell_magic
+    def async_(self, line, cell):
+        expr = 'async def __f():\n{cell}'.format(cell=indent(cell))
+
+        self._exec(expr)
+
+    def _exec(self, expr):
+        expr = ast.parse(expr)
+        expr = expr.body[0].body
+
+        nodes = [RewriteAwait().visit(node) for node in expr]
         module = ast.Module(nodes)
         ast.fix_missing_locations(module)
 

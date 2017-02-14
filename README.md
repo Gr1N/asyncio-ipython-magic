@@ -32,14 +32,19 @@ Enjoy!
        ...:         await asyncio.sleep(2)
        ...:
 
-    In [5]: %%asyncio
+    In [5]: %%async_
        ...: await foo()
        ...:
     time = 1478985421.307329
     time = 1478985423.309606
     time = 1478985425.31514
 
-    In [6]:
+    In [6]: %await_ foo()
+    time = 1487097377.700184
+    time = 1487097379.705614
+    time = 1487097381.707186
+
+    In [7]:
 
 ## Testing
 
