@@ -18,7 +18,7 @@ setup(
         'ipython',
     ),
     include_package_data=True,
-    classifiers=(
+    classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: IPython',
         'Intended Audience :: Developers',
@@ -27,5 +27,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Topic :: Software Development :: Libraries :: Python Modules',
-    ),
+    ]
 )
