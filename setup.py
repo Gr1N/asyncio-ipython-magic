@@ -6,7 +6,7 @@ readme = open('README.rst').read()
 
 setup(
     name='asyncio-ipython-magic',
-    version='0.0.2',
+    version='0.0.3',
     description='An extension for IPython that help to run AsyncIO code in '
                 'your interactive session.',
     long_description=readme,
